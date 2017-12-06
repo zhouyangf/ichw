@@ -9,18 +9,6 @@ __email__  = "pkuzyf@pku.edu.cn"
 
 from urllib.request import urlopen
 
-def get_from(json):
-    """This function is to get the FROM value in the response to a currency query.
-    Returns: The FROM value in the response to a currency query.
-    Given a JSON response to a currency query, this returns the string inside double quotes (") immediately following the keyword "from".
-    For example, if the JSON is '{"from":"2 United States Dollars","to":"2.0952375 Euros","success":true,"error":""}'
-    then this function returns '2 United States Dollars'. It returns the empty string if the JSON is the result of on invalid query. 
-    
-    Parameter json: a json string to parse
-    Precondition: json is the response to a currency query"""
-    alist = json.split('"')
-    return alist[3]  # We can know that the value (which is a string like '2 United States Dollars') following the keyword "from" is the forth element in alist.
-
 def get_to(json):
     """This function is to get the TO value in the response to a currency query.
     Returns: The TO value in the response to a currency query.
@@ -78,16 +66,6 @@ def exchange(currency_from, currency_to, amount_from):
     else:  # If currency is invalid, we will let the user know.
         print("Your currency query has an error, which means the parameter 'currency_from' or 'currency_to' you give is not a valid currency code.")
 
-def test_get_from():
-    """This function is to test the function--get_from(json)
-    I use a case--1 United States Dollar = 6.52615 Chinese Yuan--to test it"""
-    doc = urlopen("http://cs1110.cs.cornell.edu/2016fa/a1server.php?from=USD&to=CNY&amt=1")
-    docstr = doc.read()
-    doc.close()
-    json = docstr.decode("ascii")
-    assert("1 United States Dollar" == get_from(json))  # If the fuction is right, its return should be "1 United States Dollar".
-
-
 def test_get_to():
     """This function is to test the function--get_to(json)
     I use a case--1 United States Dollar = 6.52615 Chinese Yuan--to test it"""
@@ -113,7 +91,6 @@ def test_exchange():
     
 def testAll():
     """test all cases"""
-    test_get_from()
     test_get_to()
     test_has_error()
     test_exchange()
