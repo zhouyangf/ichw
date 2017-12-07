@@ -1,6 +1,6 @@
 """currency.py: This module is to calculate the amount of new currency you want convert to, from a certain amount of the old currency on hand.
-This module contains 4 functions and 5 test-functions, they are get_from(json), get_to(json), has_error(json), exchange(currency_from, currency_to, amount_from),
-and test_get_from(), test_get_to(), test_has_error(), test_exchange() and testAll().
+This module contains 4 functions and 5 test-functions, they are get_to(json), has_error(json), exchange(currency_from, currency_to, amount_from),
+and test_get_to(), test_has_error(), test_exchange() and testAll().
 
 __author__ = "Zhou Yangfan"
 __pkuid__  = "1600017735"
